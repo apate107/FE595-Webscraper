@@ -6,8 +6,8 @@ def get_story(url):
     html = requests.get(url).text
     soup = BeautifulSoup(html, "html.parser")
     data = soup.findAll("p")[1].text # The second <p> tag has the sentences
-    male = data[data.find("He's"):data.find(".")]
-    female = data[data.find("She's"):data.find(".", data.find(".")+1)]
+    male = data[data.find("He's"):data.find(" She's")]
+    female = data[data.find("She's"):(len(data)-len(" They fight crime!"))]
     return male, female
 
 
