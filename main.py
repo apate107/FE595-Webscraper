@@ -11,18 +11,11 @@ def get_story(url):
     return male, female
 
 
-def save_to_file(male, female):
-    with open("male.txt", "a") as f:
-        f.write(male + "\n")
-        f.close()
-    with open("female.txt", "a") as f:
-        f.write(female + "\n")
-        f.close()
-
-
 if __name__ == '__main__':
     URL = 'https://theyfightcrime.org/'
     male, female = None, None
-    for i in range(0, 50):
-        male, female = get_story(URL)
-        save_to_file(male, female)
+    with open("male.txt", "a") as fMale, open("female.txt", "a") as fFemale:
+        for i in range(50):
+            male, female = get_story(URL)
+            fMale.write(male + '\n')
+            fFemale.write(female + '\n')
